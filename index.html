@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80%;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #result {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 80%;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script>
+        function ShowResult() {
+            let math = parseInt(document.getElementById("M").value);
+            let science = parseInt(document.getElementById("S").value);
+            let urdu = parseInt(document.getElementById("U").value);
+
+            let add = math + science + urdu;
+            let per = (add * 100) / 300;
+            let resultElement = document.getElementById("result");
+
+            if (per > 89) {
+                resultElement.value = "A+";
+            } else if (per > 79) {
+                resultElement.value = "A";
+            } else if (per > 69) {
+                resultElement.value = "B";
+            } else if (per > 59) {
+                resultElement.value = "C";
+            } else if (per > 49) {
+                resultElement.value = "D";
+            } else if (per > 39) {
+                resultElement.value = "E";
+            } else {
+                resultElement.value = "F";
+            }
+
+            let percentageElement = document.getElementById("percentage");
+            percentageElement.value = per.toFixed(2) + "%";
+        }
+    </script>
+</head>
+
+<body>
+
+    <form>
+        <input type="number" max="100" name="Math" id="M" placeholder="Mathematics">
+    </br>
+        <input type="number" max="100" name="Science" id="S" placeholder="Science">
+    </br>
+        <input type="number" max="100" name="Urdu" id="U" placeholder="Urdu">
+    </br>
+        <button type="button" onclick="ShowResult()">Show Result</button>
+    </br>
+        <input type="text" id="result" readonly />
+    </br>
+    <input type="text" id="percentage" readonly />
+    </form>
+
+</body>
+
+</html>
